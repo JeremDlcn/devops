@@ -25,9 +25,9 @@ for n in range(10):
 
 
 # envoie automatique du json
-response["unite"] = 5
-response["machine"] = "Lait"
-response["content"] = 5.5
+response["unite"] = num_auto
+response["machine"] = type_auto
+response["content"] = temp_cuv
 
 str_response = json.dumps(response)
 
