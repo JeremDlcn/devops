@@ -1,6 +1,7 @@
 import random
 # Créez un script qui créeer un json et l'envoie au controlleur (envoie de données via les sockets dockers)
 import json
+import time 
 
 response = {}
 
@@ -29,10 +30,16 @@ response["machine"] = "Lait"
 response["content"] = 5.5
 
 str_response = json.dumps(response)
-print(str_response)
 
-donnees = str_response
-with open("C:/Users/Public/DevOps/devops/fichier.json", "w") as file:
-    json.dump(donnees, file)
+count=0
+
+while True:
+    count += 1
+    donnees = str_response
+    with open("fichier%d.json" % (count) , "w") as file:
+        json.dump(donnees, file)
+    
+    print(str_response)
+    time.sleep(10)
 
 # Socket Python
