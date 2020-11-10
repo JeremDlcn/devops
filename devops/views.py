@@ -1,4 +1,4 @@
-from flask import Flask
+from flask import Flask, render_template, url_for
 
 app = Flask(__name__)
 app.config['SEND_FILE_MAX_AGE_DEFAULT'] = 0  # developpement refresh
@@ -13,8 +13,8 @@ app.config.update(
 # Routes
 
 @app.route('/')
-def funcname(parameter_list):
+def funcname():
     """
     docstring
     """
-    pass
+    return render_template("index.html")
