@@ -6,9 +6,13 @@
         <meta name="theme-color" content=""/>
         <link rel="icon" type="icon/png" href="{{ url_for('static', filename='img/robot.png') }}"/>
         <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/chart.css') }}">
         <title>Dashboard - Devops</title>
     </head>
     <body>
-        
+        {% block graph %}
+        {% endblock %}
+        <script src="{{ url_for('static', filename='js/chart.js') }}"></script>
+        <script src="{{ url_for('static', filename='js/app.js') }}"></script>
     </body>
 </html>
