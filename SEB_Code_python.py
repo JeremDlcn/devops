@@ -17,7 +17,7 @@ while True:
          print(numéro_unité)
          print(num_auto, type_auto, temp_cuv)
          
-    personneDict = "{'emp_details': [{ 'unite': num_auto, 'machine':type_auto, 'type_auto': type_auto }]}"
+    personneDict = {"emp_details": [{ "unite": num_auto, "machine":type_auto, "type_auto": type_auto }]}
     count += 1
     with open("JSON_Files/fichier%d.json" % (count), "w") as jsonFile:
         json.dump(personneDict, jsonFile)

@@ -3,7 +3,7 @@ import csv
 
 # Opening JSON file and loading the data
 # into the variable data
-with open('fichier.json') as json_file:
+with open('JSON_Files/fichier1.json') as json_file:
     data = json.load(json_file)
 
 employee_data = data['emp_details']
