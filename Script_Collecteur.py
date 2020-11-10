@@ -9,7 +9,7 @@ with open('JSON_Files/fichier1.json') as json_file:
 employee_data = data['emp_details']
 
 # now we will open a file for writing
-data_file = open('data_file.csv', 'w')
+data_file = open('data_filee.csv', 'w')
 
 # create the csv writer object
 csv_writer = csv.writer(data_file)
