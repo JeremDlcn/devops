@@ -7,28 +7,30 @@ with open('JSON_Files/fichier3.json') as json_file:
     data = json.load(json_file)
 
 employee_data = data['emp_details']
+print(employee_data)
 
 # now we will open a file for writing
-data_file = open('CSV_Files/fichier3.csv', 'w')
 
-# create the csv writer object
-csv_writer = csv.writer(data_file)
+with open('CSV_Files/fichier3.csv', "a+", newline='') as data_file:
+    # create the csv writer object
+    csv_writer = csv.writer(data_file)
+    print(data_file)
 
-# Counter variable used for writing
-# headers to the CSV file
-count = 0
+    # Counter variable used for writing
+    # headers to the CSV file
+    count = 0
 
-for emp in employee_data:
-    if count == 0:
+    for emp in employee_data:
 
-        # Writing headers of CSV file
         header = emp.keys()
+        print(header)
         csv_writer.writerow(header)
-        count += 1
+        # Writing data of CSV file
+        values = emp.values()
+        csv_writer.writerow(values)
+        print(emp.values())
 
-    # Writing data of CSV file
-    csv_writer.writerow(emp.values())
-
+    reader = csv.reader(data_file)
+    for row in reader:
+        print(row)
 data_file.close()
-
-print("Hello World")

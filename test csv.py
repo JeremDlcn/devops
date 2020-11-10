@@ -22,3 +22,26 @@ for valeur in valeurs:
     f.write(ligne)
 
 f.close()
+
+data_file = open('CSV_Files/fichier3.csv', 'w')
+
+# create the csv writer object
+csv_writer = csv.writer(data_file)
+
+# Counter variable used for writing
+# headers to the CSV file
+count = 0
+
+for emp in employee_data:
+    if count == 0:
+
+        # Writing headers of CSV file
+        header = emp.keys()
+        csv_writer.writerow(header)
+        count += 1
+
+    # Writing data of CSV file
+    csv_writer.writerow(emp.values())
+
+
+data_file.close()
