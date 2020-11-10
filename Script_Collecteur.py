@@ -3,13 +3,13 @@ import csv
 
 # Opening JSON file and loading the data
 # into the variable data
-with open('JSON_Files/fichier2.json') as json_file:
+with open('JSON_Files/fichier3.json') as json_file:
     data = json.load(json_file)
 
 employee_data = data['emp_details']
 
 # now we will open a file for writing
-data_file = open('CSV_Files/fichier2.csv', 'w')
+data_file = open('CSV_Files/fichier3.csv', 'w')
 
 # create the csv writer object
 csv_writer = csv.writer(data_file)
