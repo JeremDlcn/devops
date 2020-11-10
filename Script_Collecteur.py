@@ -3,6 +3,7 @@ import csv
 
 # Opening JSON file and loading the data
 # into the variable data
+# Plusieur fichiers jsons (déplacé)
 with open('JSON_Files/fichier3.json') as json_file:
     data = json.load(json_file)
 
@@ -11,7 +12,7 @@ print(employee_data)
 
 # now we will open a file for writing
 
-with open('CSV_Files/fichier3.csv', "a+", newline='') as data_file:
+with open('CSV_Files/fichier3.csv', "w", newline='') as data_file:
     # create the csv writer object
     csv_writer = csv.writer(data_file)
     print(data_file)
@@ -30,7 +31,5 @@ with open('CSV_Files/fichier3.csv', "a+", newline='') as data_file:
         csv_writer.writerow(values)
         print(emp.values())
 
-    reader = csv.reader(data_file)
-    for row in reader:
-        print(row)
+
 data_file.close()
