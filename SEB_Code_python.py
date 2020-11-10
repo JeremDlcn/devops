@@ -25,7 +25,7 @@ while True:
     str_response = json.dumps(response)
     count += 1
     donnees = str_response
-    with open("fichier%d.json" % (count), "w") as file:
+    with open("JSON_Files/fichier%d.json" % (count), "w") as file:
         json.dump(donnees, file)
     print(str_response)
     time.sleep(10)
