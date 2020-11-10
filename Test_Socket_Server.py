@@ -12,5 +12,5 @@ while 1:
     data = conn.recv(1024)
     if not data:
         break
-    conn.send(data)
+    conn.sendall(data)
 conn.close()
