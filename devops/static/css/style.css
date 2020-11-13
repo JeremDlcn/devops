@@ -1,0 +1,125 @@
+:root {
+    --main-font: #000;
+    --bg-color: #FFF;
+    --primary: #537CA1;
+    --bg: #E4E4E4;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html,body {
+    scroll-behavior: smooth;
+    width: 100%;
+    height: 100%;
+}
+
+body {
+    background-color: var(--bg-color);
+    color: var(--main-font);
+    font-family: sans-serif;
+}
+
+a {
+    text-decoration: none;
+    color: var(--main-font);
+}
+
+.unit {
+    display: flex;
+    padding: 2rem;
+    background-color: var(--primary);
+    width: 100%;
+}
+
+.lines,
+.number {
+    width: 50%;
+}
+
+
+/* number section */
+.number-title,
+.number-value > div {
+    margin-bottom: 2rem;
+}
+
+.number-weight,
+.number-bar {
+    display: flex;
+}
+
+.number-bar {
+    display: flex;
+    flex-direction: column;
+}
+
+.number-title b {
+    font-weight: normal;
+}
+.weight-container {
+    margin-right: 2rem;
+}
+
+/* bar charts */
+.bar-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-right: 2rem;
+}
+
+.bar-item-title {
+    width: 10ch;
+    text-align: center;
+}
+.bar-item-container {
+    background-color: var(--bg);
+    width: 100%;
+}
+
+
+/* history button */
+.details-container {
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+    margin-top: .5rem;
+    margin-left: 2rem;
+    padding: 0 1rem;
+}
+
+.details {
+    border: none;
+    background: transparent;
+    opacity: 0.7;
+    cursor: pointer;
+    outline: none;
+}
+.details:hover,
+.details:focus {
+    opacity: 1;
+}
+.details-arrow {
+    filter: brightness(0%);
+    font-size: 0.5rem;
+    position: relative;
+    bottom: .1rem;
+    display: inline-block;
+    transform: rotateZ(0deg);
+    transition: transform .2s ease-in;
+}
+.details:hover .details-arrow {
+    transform: rotateZ(90deg);
+}
+
+/* lines chart */
+.lines-container {
+    background-color: var(--bg);
+    margin: 0.5rem;
+    padding: 0.5rem;
+    border-radius: .2rem;
+}

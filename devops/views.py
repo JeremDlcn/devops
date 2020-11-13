@@ -13,8 +13,8 @@ app.config.update(
 # Routes
 
 @app.route('/')
-def funcname():
+def dashboard():
     """
     docstring
     """
-    return render_template("graphic.html")
+    return render_template("index.html")
