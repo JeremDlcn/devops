@@ -75,16 +75,17 @@ main {
     transition: transform .2s;
 }
 
-.view-button:hover::before {
+.view-button.active::before {
     transform: translateX(100%);
 }
 
 .view-global,
 .view-unit {
-    padding: 1rem 2rem;
+    padding: .7rem 1.6rem;
     font-weight: bold;
     position: relative;
     z-index: 1;
+    cursor: pointer;
 }
 .view-global {
     color: var(--bg-card);
@@ -93,10 +94,10 @@ main {
     color: var(--primary);
 }
 
-.view-button:hover .view-unit {
+.view-button.active .view-unit {
     color: var(--bg-card);
 }
-.view-button:hover .view-global {
+.view-button.active .view-global {
     color: var(--primary);
 }
 
