@@ -1,33 +1,119 @@
-let chart1 = document.getElementById('chart1').getContext('2d');
-let chart2 = document.getElementById('chart2').getContext('2d');
-let chart3 = document.getElementById('chart3').getContext('2d');
-let chart4 = document.getElementById('chart4').getContext('2d');
+
 
 
 new Chart(document.getElementById("bar1"), {
     type: 'bar',
     data: {
-        labels: [
-            ["Température","Cuve (°C)"],
-            ["Température","extérieur (°C)"],
-            "NaCl",
-            "K+"
-        ],
+        labels: ["°C"],
         datasets: [{
-            label: ["°C","ext°C","NaCl","K+"],
-            backgroundColor: ["#c45850","#c45850","#c45850","#c45850"],
+            label: ["°C"],
+            backgroundColor: ["#2CE00F"],
             barThickness: 40,
-            data: [40, 20, 30, 40]
+            data: [3]
         }]
     },
     options: {
+        responsive: true,
+        maintainAspectRatio: false,
         legend: {
           display: false // hides the legend
         },
         scales: {
             yAxes: [{
                 ticks: {
-                    min: 0,
+                    fontSize: 10,
+                    min: 2,
+                    stepSize: 0.1,
+                    suggestedMax: 4.5
+                }
+            }],
+        }
+      }
+});
+new Chart(document.getElementById("bar2"), {
+    type: 'bar',
+    data: {
+        labels: ["ext"],
+        datasets: [{
+            label: ["°C"],
+            backgroundColor: ["#2CE00F"],
+            barThickness: 40,
+            data: [10]
+        }]
+    },
+    options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        legend: {
+          display: false // hides the legend
+        },
+        scales: {
+            yAxes: [{
+                ticks: {
+                    fontSize: 10,
+                    min: 7.5,
+                    stepSize: 0.1,
+                    suggestedMax: 14.5,
+                }
+            }],
+        }
+      }
+});
+
+new Chart(document.getElementById("bar3"), {
+    type: 'bar',
+    data: {
+        labels: ["pH"],
+        datasets: [{
+            label: ["pH"],
+            backgroundColor: ["#2CE00F"],
+            barThickness: 40,
+            data: [7.0]
+        }]
+    },
+    options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        legend: {
+          display: false // hides the legend
+        },
+        scales: {
+            yAxes: [{
+                ticks: {
+                    fontSize: 10,
+                    min: 6.5,
+                    suggestedMax: 7.5,
+                    setpSize: 0.1,
+                    beginAtZero: true
+                }
+            }],
+        }
+      }
+});
+new Chart(document.getElementById("bar4"), {
+    type: 'bar',
+    data: {
+        labels: ["K+"],
+        datasets: [{
+            label: ["K+"],
+            backgroundColor: ["#2CE00F"],
+            barThickness: 40,
+            data: [40]
+        }]
+    },
+    options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        legend: {
+          display: false, // hides the legend
+        },
+        scales: {
+            yAxes: [{
+                ticks: {
+                    fontSize: 10,
+                    min: 30,
+                    suggestedMax: 50,
+                    setSize: 1,
                     beginAtZero: true
                 }
             }],
@@ -39,7 +125,19 @@ new Chart(document.getElementById("bar1"), {
 
 
 
+
+
+
+
+
+
+
 // Lines charts
+// ////////////
+let chart1 = document.getElementById('chart1').getContext('2d');
+let chart2 = document.getElementById('chart2').getContext('2d');
+
+
 
 let lineChart = new Chart(chart1, {
     type: 'line',
@@ -47,40 +145,23 @@ let lineChart = new Chart(chart1, {
         labels: ["00", "10", "20", "30", "40", "50", "60"],
         datasets: [
             {
-                label: 'Montagne russe',
+                label: 'NaCl',
                 borderColor: "rgba(78, 115, 223, 1)",
                 data: [2.5, 2.5, 2.8, 2.0, 3.0, 2.8, 4.0],
-            },
-            {
-                label: 'Montagne Française',
-                borderColor: "rgba(255, 75, 103, 1)",
-                data: [2.2, 2.0, 1.8, 2.8, 3.9, 1.0, 2.0],
             },
         ]
     }, 
     options: {
-        scales: {
-            xAxes: [
-                {
-                    position: "botom",
-                    scaleLabel: {
-                        display: true,
-                        labelString: "Frequency (Hz)"
-                    }
-                }
-            ],
-            yAxes: [
-                {
-                    position: "top",
-                    scaleLabel: {
-                        display: true,
-                        labelString: "Frequency (Hz)",
-                    }
-                }
-            ],
+        responsive: true,
+        maintainAspectRatio: false,
+        legend: {
+            labels: {
+                fontSize: 10
+            }
         }
     }
 });
+
 
 let lineChart2 = new Chart(chart2, {
     type: 'line',
@@ -88,119 +169,24 @@ let lineChart2 = new Chart(chart2, {
         labels: ["00", "10", "20", "30", "40", "50", "60"],
         datasets: [
             {
-                label: 'Montagne russe',
+                label: 'Salmonelle',
                 borderColor: "rgba(78, 115, 223, 1)",
                 data: [2.5, 2.5, 2.8, 2.0, 3.0, 2.8, 4.0],
             },
             {
-                label: 'Montagne Française',
+                label: 'E-coli',
                 borderColor: "rgba(255, 75, 103, 1)",
                 data: [2.2, 2.0, 1.8, 2.8, 3.9, 1.0, 2.0],
+            },
+            {
+                label: 'Listéria',
+                borderColor: "rgba(73, 224, 15, 1)",
+                data: [2.0, 1.0, 1.5, 1.8, 0.2, 4.0, 0.2],
             },
         ]
     }, 
     options: {
-        scales: {
-            xAxes: [
-                {
-                    position: "botom",
-                    scaleLabel: {
-                        display: true,
-                        labelString: "Frequency (Hz)"
-                    }
-                }
-            ],
-            yAxes: [
-                {
-                    position: "top",
-                    scaleLabel: {
-                        display: true,
-                        labelString: "Frequency (Hz)",
-                    }
-                }
-            ],
-        }
-    }
-});
-
-let lineChart3 = new Chart(chart3, {
-    type: 'line',
-    data: {
-        labels: ["00", "10", "20", "30", "40", "50", "60"],
-        datasets: [
-            {
-                label: 'Montagne russe',
-                borderColor: "rgba(78, 115, 223, 1)",
-                data: [2.5, 2.5, 2.8, 2.0, 3.0, 2.8, 4.0],
-            },
-            {
-                label: 'Montagne Française',
-                borderColor: "rgba(255, 75, 103, 1)",
-                data: [2.2, 2.0, 1.8, 2.8, 3.9, 1.0, 2.0],
-            },
-        ]
-    }, 
-    options: {
-        scales: {
-            xAxes: [
-                {
-                    position: "botom",
-                    scaleLabel: {
-                        display: true,
-                        labelString: "Frequency (Hz)"
-                    }
-                }
-            ],
-            yAxes: [
-                {
-                    position: "top",
-                    scaleLabel: {
-                        display: true,
-                        labelString: "Frequency (Hz)",
-                    }
-                }
-            ],
-        }
-    }
-});
-
-let lineChart4 = new Chart(chart4, {
-    type: 'line',
-    data: {
-        labels: ["00", "10", "20", "30", "40", "50", "60"],
-        datasets: [
-            {
-                label: 'Montagne russe',
-                borderColor: "rgba(78, 115, 223, 1)",
-                data: [2.5, 2.5, 2.8, 2.0, 3.0, 2.8, 4.0],
-            },
-            {
-                label: 'Montagne Française',
-                borderColor: "rgba(255, 75, 103, 1)",
-                data: [2.2, 2.0, 1.8, 2.8, 3.9, 1.0, 2.0],
-            },
-        ]
-    }, 
-    options: {
-        scales: {
-            xAxes: [
-                {
-                    position: "botom",
-                    scaleLabel: {
-                        display: true,
-                        labelString: "Frequency (Hz)"
-                    }
-                }
-            ],
-            yAxes: [
-                {
-                    position: "top",
-                    scaleLabel: {
-                        display: true,
-                        labelString: "Frequency (Hz)",
-                    }
-                }
-            ],
-        }
+        responsive: true,
+        maintainAspectRatio: false
     }
 });

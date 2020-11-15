@@ -10,10 +10,19 @@
         <title>Dashboard - Devops</title>
     </head>
     <body>
-        <section class="unit">
-            {% include 'unit/unit-number.html' %}
-            {% include 'unit/unit-chart.html' %}
-        </section>
+        <main>
+            <section class="title">
+                
+            </section>
+            {% for item in range(5) %}
+            <section class="unit">
+                {% with nb = item + 1 %}
+                    {% include 'unit/unit-number.html' %}
+                {% endwith %}
+                {% include 'unit/unit-chart.html' %}
+            </section>
+            {% endfor %}
+        </main>
         <script src="{{ url_for('static', filename='js/chart.js') }}"></script>
         <script src="{{ url_for('static', filename='js/app.js') }}"></script>
     </body>
