@@ -4,7 +4,7 @@
 new Chart(document.getElementById("bar1"), {
     type: 'bar',
     data: {
-        labels: ["°C"],
+        labels: [["cuve","(°C)"]],
         datasets: [{
             label: ["°C"],
             backgroundColor: ["#2CE00F"],
@@ -27,13 +27,19 @@ new Chart(document.getElementById("bar1"), {
                     suggestedMax: 4.5
                 }
             }],
+            xAxes: [{
+                ticks: {
+                    fontSize: 10,
+                    maxRotation: 0,
+                }
+            }]
         }
       }
 });
 new Chart(document.getElementById("bar2"), {
     type: 'bar',
     data: {
-        labels: ["ext"],
+        labels: [["ext","(°C)"]],
         datasets: [{
             label: ["°C"],
             backgroundColor: ["#2CE00F"],
@@ -93,7 +99,7 @@ new Chart(document.getElementById("bar3"), {
 new Chart(document.getElementById("bar4"), {
     type: 'bar',
     data: {
-        labels: ["K+"],
+        labels: [["K+","(mg)"]],
         datasets: [{
             label: ["K+"],
             backgroundColor: ["#2CE00F"],
@@ -142,12 +148,12 @@ let chart2 = document.getElementById('chart2').getContext('2d');
 let lineChart = new Chart(chart1, {
     type: 'line',
     data: {
-        labels: ["00", "10", "20", "30", "40", "50", "60"],
+        labels: ["00", "10", "20", "30"],
         datasets: [
             {
                 label: 'NaCl',
                 borderColor: "rgba(78, 115, 223, 1)",
-                data: [2.5, 2.5, 2.8, 2.0, 3.0, 2.8, 4.0],
+                data: [1.5, 1.9, 1.8, 2.0],
             },
         ]
     }, 
@@ -158,6 +164,15 @@ let lineChart = new Chart(chart1, {
             labels: {
                 fontSize: 10
             }
+        },
+        scales: {
+            yAxes: [{
+                ticks: {
+                    min: 1,
+                    suggestedMax: 2,
+                    stepSize: 0.1,
+                }
+            }],
         }
     }
 });
@@ -187,6 +202,14 @@ let lineChart2 = new Chart(chart2, {
     }, 
     options: {
         responsive: true,
-        maintainAspectRatio: false
+        maintainAspectRatio: false,
+        scales: {
+            yAxes: [{
+                ticks: {
+                    min: 15,
+                    suggestedMax: 55,
+                }
+            }],
+        }
     }
 });

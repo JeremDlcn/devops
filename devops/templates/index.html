@@ -12,11 +12,20 @@
     <body>
         <main>
             <section class="title">
-                
+                <h1 class="title-text">Monitor</h1>
+                <p class="title-subtext">Usine de produits laitiers</p>
+                <div class="view">
+                    <p class="view-title">Changer de vue</p>
+                    <div class="view-button">
+                        <div class="view-global">Globale</div>
+                        <div class="view-unit">&nbsp;&nbsp;Unité&nbsp;&nbsp;</div>
+                    </div>
+                </div>
             </section>
             {% for item in range(5) %}
-            <section class="unit">
-                {% with nb = item + 1 %}
+                {% set nb = item +1 %}
+            <section class="unit" data-unit="{{ nb }}">
+                {% with nb=nb %}
                     {% include 'unit/unit-number.html' %}
                 {% endwith %}
                 {% include 'unit/unit-chart.html' %}
