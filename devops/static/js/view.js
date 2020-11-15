@@ -5,6 +5,7 @@ const pagination = document.querySelector('.pagination');
 viewGlobal.addEventListener('click', ()=>{
     viewGlobal.parentElement.classList.remove('active')
     pagination.classList.remove('exist');
+    removeClass();
 });
 
 viewUnit.addEventListener('click', ()=>{
@@ -30,7 +31,16 @@ function hideUnit(num) {
     for (let i = 0; i < units.length; i++) {
         units[i].style.display = "none"
         if (units[i].getAttribute("data-unit") == num) {
-            units[i].style.display = "flex"
+            units[i].style.display = "flex";
+            document.querySelector('main').classList.add('only');
         }
+    }
+}
+
+
+function removeClass() {
+    for (let i = 0; i < units.length; i++) {
+        units[i].style.display = "flex"
+        document.querySelector('main').classList.remove('only');
     }
 }

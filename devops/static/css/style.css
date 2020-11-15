@@ -112,6 +112,7 @@ main {
     position: relative;
     z-index: 55;
     display: none;
+    width: 100%;
 }
 .pagination.exist {
     display: block;
@@ -119,7 +120,9 @@ main {
 
 .pagination > ol {
     display: flex;
+    margin: 0 auto;
     margin-top: 2rem;
+    width: fit-content;
 }
 
 .pagination li {
@@ -181,6 +184,13 @@ main {
     opacity: .04;
     line-height: 23rem;
     z-index: 0;
+}
+
+main.only .unit{
+    width: 100%;
+}
+main.only {
+    justify-content: flex-start;
 }
 
 .lines{
