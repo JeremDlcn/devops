@@ -31,6 +31,13 @@
                 {% include 'unit/unit-chart.html' %}
             </section>
             {% endfor %}
+            <div class="pagination">
+                <ol>
+                    {% for item in range(5) %}
+                    <li>{{ item +1 }}</li>
+                    {% endfor %}
+                </ol>
+            </div>
         </main>
         <script src="{{ url_for('static', filename='js/view.js') }}"></script>
         <script src="{{ url_for('static', filename='js/chart.js') }}"></script>

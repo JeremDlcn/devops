@@ -3,6 +3,8 @@
     --bg: #F1F1F1;
     --bg-card: #FFFFFF;
     --primary: #0090E1;
+    --primary-op: #008ee18f;
+    --primary-light: #008ee13b;
     --opac: #AFAFAF;
 }
 
@@ -29,6 +31,10 @@ a {
     color: var(--main-font);
 }
 
+ol {
+    list-style-type: none;
+}
+
 main {
     display: flex;
     justify-content: center;
@@ -36,7 +42,7 @@ main {
 }
 
 
-/* Presetation */
+/* Presentation */
 .title {
     width: 46%;
     margin: 1rem;
@@ -100,6 +106,45 @@ main {
 .view-button.active .view-global {
     color: var(--primary);
 }
+
+/* pagination */
+.pagination {
+    position: relative;
+    z-index: 55;
+    display: none;
+}
+.pagination.exist {
+    display: block;
+}
+
+.pagination > ol {
+    display: flex;
+    margin-top: 2rem;
+}
+
+.pagination li {
+    border-radius: 50%;
+    background-color: var(--primary-op);
+    padding: .2rem;
+    font-size: 1.2rem;
+    width: 2rem;
+    height: 2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: bold;
+    color: var(--bg);
+    cursor: pointer;
+    margin: .3rem;
+}
+
+.pagination li:hover{
+    background-color: var(--primary-light);
+}
+.pagination li:active{
+    background-color: var(--primary);
+}
+
 
 
 
