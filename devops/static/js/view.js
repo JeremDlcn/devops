@@ -10,4 +10,27 @@ viewGlobal.addEventListener('click', ()=>{
 viewUnit.addEventListener('click', ()=>{
     viewUnit.parentElement.classList.add('active')
     pagination.classList.add('exist');
+    sortUnit();
+    hideUnit(1);
 });
+
+const units = document.querySelectorAll('.unit');
+
+function sortUnit() {
+    const pages = document.querySelectorAll('.pagination li');
+    pages.forEach(element => {
+        element.addEventListener('click', ()=>{            
+            let nbPage = element.getAttribute("data-page");
+            hideUnit(nbPage);
+        });
+    });
+}
+
+function hideUnit(num) {
+    for (let i = 0; i < units.length; i++) {
+        units[i].style.display = "none"
+        if (units[i].getAttribute("data-unit") == num) {
+            units[i].style.display = "flex"
+        }
+    }
+}

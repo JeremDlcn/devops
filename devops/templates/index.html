@@ -34,7 +34,7 @@
             <div class="pagination">
                 <ol>
                     {% for item in range(5) %}
-                    <li>{{ item +1 }}</li>
+                    <li data-page="{{ item + 1 }}">{{ item + 1 }}</li>
                     {% endfor %}
                 </ol>
             </div>
