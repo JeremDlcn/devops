@@ -6,7 +6,6 @@ from datetime import datetime
 # Créez un script qui créer un json et l'envoie au controlleur (envoie de données via les sockets dockers)
 def random_json(numero_unite) :
     num_machine = 1
-    
     # Génération  de code aléatoire
     for n in range(10):
         dt = int(time.time())
@@ -24,7 +23,7 @@ while True:
     #Get Unix date time format
     
 
-    for x in range(1,6):
+    for x in range(5):
         random_json(x)
     
     time.sleep(60)

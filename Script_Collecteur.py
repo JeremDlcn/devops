@@ -1,35 +1,42 @@
 import json
 import csv
+import os
 
-# Opening JSON file and loading the data
-# into the variable data
-# Plusieur fichiers jsons (déplacé)
-with open('JSON_Files/fichier3.json') as json_file:
-    data = json.load(json_file)
 
-employee_data = data['emp_details']
-print(employee_data)
 
-# now we will open a file for writing
+# Opening JSON files
+list_json_files = os.listdir('C:/Users/Public/DevOps/devops/JSON_Files')
 
-with open('CSV_Files/fichier3.csv', "w", newline='') as data_file:
+for filejson in list_json_files:
+    print(filejson)
+
+    # Loading the data into the variable data
+    with open('JSON_Files/%s' % filejson) as json_file:
+        data = json.load(json_file)
+
+    employee_data = data['emp_details']
+
+    file_name = filejson[:-5]
+    print(file_name)
+    # now we will open a file for writing
+    data_file = open('CSV_Files/%s.csv' % file_name, 'w')
+
     # create the csv writer object
     csv_writer = csv.writer(data_file)
-    print(data_file)
 
     # Counter variable used for writing
     # headers to the CSV file
     count = 0
 
     for emp in employee_data:
+        if count == 0:
 
-        header = emp.keys()
-        print(header)
-        csv_writer.writerow(header)
+            # Writing headers of CSV file
+            header = emp.keys()
+            csv_writer.writerow(header)
+            count += 1
+
         # Writing data of CSV file
-        values = emp.values()
-        csv_writer.writerow(values)
-        print(emp.values())
+        csv_writer.writerow(emp.values())
 
-
-data_file.close()
+    data_file.close()

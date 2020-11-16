@@ -9,7 +9,7 @@ conn = mysql.connector.connect(host="mysql-leonelal.alwaysdata.net",
 cursor = conn.cursor()
  
 cursor.execute("""  
-   LOAD DATA LOCAL INFILE 'CSV_Files/fichier2.csv' 
+   LOAD DATA LOCAL INFILE 'CSV_Files/paramunite_4_8_1605021651.csv' 
    INTO TABLE resultats
    CHARACTER SET latin1
    FIELDS TERMINATED BY ',' 
