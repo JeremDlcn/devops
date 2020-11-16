@@ -18,15 +18,12 @@ def random_json(numero_unite) :
         num_machine+=1
     return("Exports reussis")
 
-
-while True:
-    #Get Unix date time format
     
 
-    for x in range(5):
-        random_json(x)
-    
-    time.sleep(60)
+for x in range(1, 6):
+    random_json(x)
+
+time.sleep(60)
 
 # Création d'un json
 

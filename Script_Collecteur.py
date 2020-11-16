@@ -1,6 +1,7 @@
 import json
 import csv
 import os
+import shutil
 
 
 
@@ -40,3 +41,5 @@ for filejson in list_json_files:
         csv_writer.writerow(emp.values())
 
     data_file.close()
+    
+    shutil.move('C:/Users/Public/DevOps/devops/JSON_Files/%s' % filejson , 'C:/Users/Public/DevOps/devops/Used_JSON/%s' % filejson)
