@@ -1,6 +1,3 @@
-
-
-
 new Chart(document.getElementById("bar1"), {
     type: 'bar',
     data: {
@@ -62,6 +59,12 @@ new Chart(document.getElementById("bar2"), {
                     suggestedMax: 14.5,
                 }
             }],
+            xAxes: [{
+                ticks: {
+                    fontSize: 10,
+                    maxRotation: 0,
+                }
+            }]
         }
       }
 });
@@ -93,6 +96,12 @@ new Chart(document.getElementById("bar3"), {
                     beginAtZero: true
                 }
             }],
+            xAxes: [{
+                ticks: {
+                    fontSize: 10,
+                    maxRotation: 0,
+                }
+            }]
         }
       }
 });
@@ -123,6 +132,12 @@ new Chart(document.getElementById("bar4"), {
                     beginAtZero: true
                 }
             }],
+            xAxes: [{
+                ticks: {
+                    fontSize: 10,
+                    maxRotation: 0,
+                }
+            }]
         }
       }
 });

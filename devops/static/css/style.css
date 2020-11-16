@@ -187,11 +187,20 @@ main {
 }
 
 main.only .unit{
-    width: 100%;
+    width: fit-content;
+    margin: 0 auto;
+}
+main.only .title{
+    flex: 100%;
+}
+main.only .lines {
+    margin-left: 6rem;
 }
 main.only {
     justify-content: flex-start;
 }
+
+
 
 .lines{
     width: 65%;
@@ -332,4 +341,15 @@ main.only {
 
 .lines-title {
     font-weight: bold;
+}
+
+main.only .chart1,
+main.only .chart2 {
+    height: 200px!important;
+    width: 500px!important;
+}
+
+main.only .lines-container,
+main.only .lines-chart {
+    width: fit-content;
 }
