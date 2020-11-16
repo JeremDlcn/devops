@@ -1,4 +1,5 @@
-new Chart(document.getElementById("bar1"), {
+let barValue = []
+let bar1Chart = new Chart(document.getElementById("bar1"), {
     type: 'bar',
     data: {
         labels: [["cuve","(°C)"]],
@@ -6,7 +7,7 @@ new Chart(document.getElementById("bar1"), {
             label: ["°C"],
             backgroundColor: ["#2CE00F"],
             barThickness: 40,
-            data: [3]
+            data: barValue[0]
         }]
     },
     options: {
