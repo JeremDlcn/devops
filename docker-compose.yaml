@@ -1,0 +1,75 @@
+version: "3"
+
+services:
+    app:                      #nom a renseigner sur la partie
+        container_name: app   #nom du container (meme que nom de partie)
+        restart: always       #redémarre automatiquement si le docker crash
+        build: ./web          #build le dockerfile dans le dossier web
+        ports:                #sur quel port sera dispo le docker "app"
+            - "80:3000"
+        depends_on:            #mysql doit démarrer avant 
+            - mysql
+    
+    mysql:
+        container_name: mysql
+        image: mariadb                    #prendre directement l'image mariadb, pas besoin de dockerfile
+        restart: always                   #redémarre automatiquement si le docker crash
+        environment:                      #variables d'environnement
+            MYSQL_ROOT_PASSWORD: root
+            MYSQL_DATABASE: devops-leonelaboss
+        volumes:                           #création du volume pour faire perdurer la base de données
+            - ./data:/var/lib/mysql        #volume crée par docker  ":"   ce qu'on stocke dedans
+
+    script:                      #nom a renseigner sur la partie
+      container_name: script   #nom du container (meme que nom de partie)
+      restart: always       #redémarre automatiquement si le docker crash
+      build: ./scriptCollecteur          #build le dockerfile dans le dossier web
+      ports:                #sur quel port sera dispo le docker "app"
+          - "80:3000"
+      depends_on:            #mysql doit démarrer avant 
+          - mysql
+
+    U1:                     #nom a renseigner sur la partie
+      container_name: U1    #nom du container (meme que nom de partie)
+      restart: always       #redémarre automatiquement si le docker crash
+      build: ./unit         #build le dockerfile dans le dossier web
+      ports:                #sur quel port sera dispo le docker "app"
+          - "80:3000"
+      depends_on:           #mysql doit démarrer avant 
+          - script
+
+    U2:                     #nom a renseigner sur la partie
+      container_name: U2    #nom du container (meme que nom de partie)
+      restart: always       #redémarre automatiquement si le docker crash
+      build: ./unit         #build le dockerfile dans le dossier web
+      ports:                #sur quel port sera dispo le docker "app"
+          - "80:3000"
+      depends_on:           #mysql doit démarrer avant 
+          - script
+
+    U3:                     #nom a renseigner sur la partie
+      container_name: U3    #nom du container (meme que nom de partie)
+      restart: always       #redémarre automatiquement si le docker crash
+      build: ./unit         #build le dockerfile dans le dossier web
+      ports:                #sur quel port sera dispo le docker "app"
+          - "80:3000"
+      depends_on:           #mysql doit démarrer avant 
+          - script
+
+    U4:                     #nom a renseigner sur la partie
+      container_name: U4    #nom du container (meme que nom de partie)
+      restart: always       #redémarre automatiquement si le docker crash
+      build: ./unit         #build le dockerfile dans le dossier web
+      ports:                #sur quel port sera dispo le docker "app"
+          - "80:3000"
+      depends_on:           #mysql doit démarrer avant 
+          - script
+
+    U5:                     #nom a renseigner sur la partie
+      container_name: U5    #nom du container (meme que nom de partie)
+      restart: always       #redémarre automatiquement si le docker crash
+      build: ./unit         #build le dockerfile dans le dossier web
+      ports:                #sur quel port sera dispo le docker "app"
+          - "80:3000"
+      depends_on:           #mysql doit démarrer avant 
+          - script
