@@ -14,8 +14,11 @@ fetch(route, {
 
 function updateChart(data) {
 
-    //bar values
+    //weight values
+    document.querySelector('.weight-tank').innerText = data.weight.tank;
+    document.querySelector('.weight-prod').innerText = data.weight.product;
 
+    //bar values
     // Temperature en cuve
     barValue[0] = data.bar.tempTank
     bar1Chart.data.datasets.forEach((dataset) => {
@@ -46,6 +49,7 @@ function updateChart(data) {
 
 
     // lines charts values
+    // concentration de Nacl
     linesValue[0] = data.lines.nacl
     lineChart.data.datasets.forEach((dataset) => {
         linesValue[0].forEach((elt) => {
@@ -58,18 +62,6 @@ function updateChart(data) {
     linesValue[1] = data.lines.bacteria.salmonelle
     linesValue[2] = data.lines.bacteria.ecoli
     linesValue[3] = data.lines.bacteria.listeria
-    // lineChart2.data.datasets.forEach((dataset) => {
-    //     linesValue[1].forEach((elt) => {
-    //         dataset.data.push(elt);
-    //     })
-    //     linesValue[2].forEach((elt) => {
-    //         dataset.data.push(elt);
-    //     })
-    //     linesValue[3].forEach((elt) => {
-    //         dataset.data.push(elt);
-    //     })
-    //     console.log(dataset.data);
-    // })
     for (let i = 0; i < lineChart2.data.datasets.length; i++){
         idx = i + 1
         linesValue[idx].forEach((elt)=>{

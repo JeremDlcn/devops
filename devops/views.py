@@ -42,7 +42,7 @@ def data():
         },
         "weight": {
             "tank": 2500,
-            "final": 200
+            "product": 200
         }
 
     }
