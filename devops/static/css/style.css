@@ -176,7 +176,7 @@ main {
 .unit::after {
     content: attr(data-unit);
     position: absolute;
-    bottom: 0;
+    bottom: -1rem;
     right: -1rem;
     font-size: 30rem;
     color: var(--primary);

@@ -1,4 +1,6 @@
 let barValue = []
+
+
 let bar1Chart = new Chart(document.getElementById("bar1"), {
     type: 'bar',
     data: {
@@ -34,7 +36,8 @@ let bar1Chart = new Chart(document.getElementById("bar1"), {
         }
       }
 });
-new Chart(document.getElementById("bar2"), {
+
+let bar2Chart = new Chart(document.getElementById("bar2"), {
     type: 'bar',
     data: {
         labels: [["ext","(°C)"]],
@@ -42,7 +45,7 @@ new Chart(document.getElementById("bar2"), {
             label: ["°C"],
             backgroundColor: ["#2CE00F"],
             barThickness: 40,
-            data: [10]
+            data: barValue[1]
         }]
     },
     options: {
@@ -70,7 +73,7 @@ new Chart(document.getElementById("bar2"), {
       }
 });
 
-new Chart(document.getElementById("bar3"), {
+let bar3Chart = new Chart(document.getElementById("bar3"), {
     type: 'bar',
     data: {
         labels: ["pH"],
@@ -78,7 +81,7 @@ new Chart(document.getElementById("bar3"), {
             label: ["pH"],
             backgroundColor: ["#2CE00F"],
             barThickness: 40,
-            data: [7.0]
+            data: barValue[2]
         }]
     },
     options: {
@@ -106,7 +109,7 @@ new Chart(document.getElementById("bar3"), {
         }
       }
 });
-new Chart(document.getElementById("bar4"), {
+let bar4Chart = new Chart(document.getElementById("bar4"), {
     type: 'bar',
     data: {
         labels: [["K+","(mg)"]],
@@ -114,7 +117,7 @@ new Chart(document.getElementById("bar4"), {
             label: ["K+"],
             backgroundColor: ["#2CE00F"],
             barThickness: 40,
-            data: [40]
+            data: barValue[3]
         }]
     },
     options: {
@@ -156,6 +159,8 @@ new Chart(document.getElementById("bar4"), {
 
 // Lines charts
 // ////////////
+let linesValue = [];
+
 let chart1 = document.getElementById('chart1').getContext('2d');
 let chart2 = document.getElementById('chart2').getContext('2d');
 
@@ -169,7 +174,7 @@ let lineChart = new Chart(chart1, {
             {
                 label: 'NaCl',
                 borderColor: "rgba(78, 115, 223, 1)",
-                data: [1.5, 1.9, 1.8, 2.0],
+                data: linesValue[0],
             },
         ]
     }, 
@@ -202,17 +207,17 @@ let lineChart2 = new Chart(chart2, {
             {
                 label: 'Salmonelle',
                 borderColor: "rgba(78, 115, 223, 1)",
-                data: [2.5, 2.5, 2.8, 2.0, 3.0, 2.8, 4.0],
+                data: linesValue[1],
             },
             {
                 label: 'E-coli',
                 borderColor: "rgba(255, 75, 103, 1)",
-                data: [2.2, 2.0, 1.8, 2.8, 3.9, 1.0, 2.0],
+                data: linesValue[2],
             },
             {
                 label: 'Listéria',
                 borderColor: "rgba(73, 224, 15, 1)",
-                data: [2.0, 1.0, 1.5, 1.8, 0.2, 4.0, 0.2],
+                data: linesValue[3],
             },
         ]
     }, 
