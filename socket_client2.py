@@ -1,19 +1,36 @@
 import socket
+import random
+import json
+import time
+from datetime import datetime
 
 hote = "localhost"
 port = 2222
 
-connexion_serveur = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-connexion_serveur.connect((hote, port))
+connexion_avec_serveur = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+connexion_avec_serveur.connect((hote, port))
 print("Connexion établie avec le serveur sur le port {}".format(port))
-
 msg_a_envoyer = b""
 while msg_a_envoyer != b"fin":
-    msg_a_envoyer = input("> ")
-    # May crash if you type special characters
-    msg_a_envoyer = msg_a_envoyer.encode()
-    # We send the message
-    connexion_serveur.send(msg_a_envoyer)
+
+    num_machine = 1
+
+    # Random code generation
+    for n in range(10):
+        dt = int(time.time())
+        num_auto = 2
+        type_auto = num_machine
+        temp_cuv = random.uniform(1, 10)
+        personneDict ={"unite": num_auto, "machine": type_auto, "type_auto": temp_cuv}
+        print(type(personneDict))
+        with open("JSON_Files/paramunite_%d_%d_%d.json" % (num_auto, num_machine, dt), "w") as jsonFile:
+            json.dump(personneDict, jsonFile)
+        num_machine += 1
+        msg_a_envoyer = str(personneDict)
+        msg_a_envoyer = msg_a_envoyer.encode()
+        connexion_avec_serveur.send(msg_a_envoyer)
+        time.sleep(0.5)
+    time.sleep(60)
 
 print("Fermeture de la connexion")
-connexion_serveur.close()
+connexion_avec_serveur.close()

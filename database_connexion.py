@@ -16,7 +16,7 @@ for filecsv in list_csv_files:
                                    database="leonelal_devops")
     cursor = conn.cursor()
 # SQL Request to insert CSV file in database
-    cursor.execute("""
+   cursor.execute("""
       LOAD DATA LOCAL INFILE 'CSV_Files/""" + filecsv + """'
       INTO TABLE resultats
       CHARACTER SET latin1
@@ -24,8 +24,7 @@ for filecsv in list_csv_files:
       ENCLOSED BY '"'
       LINES TERMINATED BY '\r\n'
       IGNORE 1 ROWS;
-   """)
-    conn.commit()
+   """) conn.commit()
 # Close the connection
     conn.close()
     data_file.close()
