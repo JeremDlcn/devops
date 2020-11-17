@@ -25,8 +25,6 @@ def random_json(numero_unite):
 for x in range(1, 6):
     random_json(x)
 
-time.sleep(60)
-
 # Création d'un json
 
 # envoie automatique du json
