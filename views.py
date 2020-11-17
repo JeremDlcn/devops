@@ -19,12 +19,13 @@ def dashboard():
     """
     return render_template("index.html")
 
-
 @app.route('/data')
 def data():
     """
     docstring
     """
+    # rs = value();
+
     data = {
         "bar": {
             "tempTank": 3,
@@ -47,3 +48,7 @@ def data():
 
     }
     return json.dumps(data)
+
+# running the app
+if __name__ == "__main__":
+    app.run(debug=True)
