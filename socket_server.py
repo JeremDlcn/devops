@@ -17,37 +17,37 @@ print("Le serveur écoute à présent sur le port {}".format(port))
 serveur_lance = True
 clients_connectes = []
 while serveur_lance:
-    # On va vérifier que de nouveaux clients ne demandent pas à se connecter
-    # Pour cela, on écoute la connexion_principale en lecture
-    # On attend maximum 50ms
+    # We will check that new clients do not ask to connect
+    # For this, we listen to the main_connection for reading
+    # We wait a maximum of 50ms
     connexions_demandees, wlist, xlist = select.select([connexion_principale],
-        [], [], 0.05)
-    
+                                                       [], [], 0.05)
+
     for connexion in connexions_demandees:
         connexion_avec_client, infos_connexion = connexion.accept()
-        # On ajoute le socket connecté à la liste des clients
+        # Add the connected socket to the list of clients
         clients_connectes.append(connexion_avec_client)
-    
-    # Maintenant, on écoute la liste des clients connectés
-    # Les clients renvoyés par select sont ceux devant être lus (recv)
-    # On attend là encore 50ms maximum
-    # On enferme l'appel à select.select dans un bloc try
-    # En effet, si la liste de clients connectés est vide, une exception
-    # Peut être levée
+
+    # Now, we listen to the list of connected clients
+    # The clients returned by select are those to be read (recv)
+    # We wait there again 50ms maximum
+    # We enclose the call to select.select in a try block
+    # Indeed, if the list of connected clients is empty, an exception
+    # Can be lifted
     clients_a_lire = []
     try:
         clients_a_lire, wlist, xlist = select.select(clients_connectes,
-                [], [], 0.05)
+                                                     [], [], 0.05)
     except select.error:
         pass
     else:
-        # On parcourt la liste des clients à lire
+        # We go through the list of customers to read
         for client in clients_a_lire:
-            # Client est de type socket
+            # Client is socket type
             msg_recu = client.recv(1024)
-            # Peut planter si le message contient des caractères spéciaux
+            # May crash if message contains special characters
             msg_recu = msg_recu.decode()
-            x = msg_recu.replace("'","\"")
+            x = msg_recu.replace("'", "\"")
             y = json.loads(x)
 
             data_file = open('test.csv', 'w')
@@ -66,8 +66,7 @@ while serveur_lance:
 
             data_file.close()
 
-
-            print(y["emp_details"]) 
+            print(y["emp_details"])
             print(type(y))
             print(type(data))
             if msg_recu == "fin":

@@ -9,7 +9,6 @@ from datetime import datetime
 
 def random_json(numero_unite):
     num_machine = 1
-    # Génération  de code aléatoire
     # Random code generation
     for n in range(10):
         dt = int(time.time())
