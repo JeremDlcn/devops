@@ -1,4 +1,5 @@
 import unittest
+from models import Data
 
 class TempTest(unittest.TestCase):
 

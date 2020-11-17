@@ -1,5 +1,4 @@
 from peewee import *
-from .views import app
 
 
 # instance de bdd
@@ -35,16 +34,16 @@ class Data(BaseModel):
     """
     docstring
     """
-    ID = IntegerField(primary_key=True, column_name='id')
-    TimeStamp = IntegerField(column_name='horaire')
-    TankTemp = FloatField(column_name='temperature_cuve')
+    id = IntegerField(primary_key=True)
+    timeStamp = IntegerField(column_name='horaire')
+    tankTemp = FloatField(column_name='temperature_cuve')
     extTemp = FloatField(column_name='temperature_exterieure')
     tankWeight = FloatField(column_name='poids_lait_cuve')
     productWeight = FloatField(column_name='poids_final')
     phLevel = FloatField(column_name='mesure_pH')
     kplusLevel = IntegerField(column_name='mesure_Kplus')
     naclConcentration = FloatField(column_name='concentration_NaCl')
-    salmonellLevel = IntegerField(column_name='niveau_bacterie_salmonelle')
+    salmonelleLevel = IntegerField(column_name='niveau_bacterie_salmonelle')
     ecoliLevel = IntegerField(column_name='niveau_bacterie_Ecoli')
     listeriaLevel = IntegerField(column_name='niveau_bacterie_listeria')
     
@@ -52,16 +51,24 @@ class Data(BaseModel):
         table_name = 'donnees'
 
 
-def init_db():
-	db.connect()
+# def init_db():
+# 	db.connect()
+
+# def close():
+#     db.close()
 
 def values():
-    f = Data.select()
-    for cf in f:     
-        print(cf.ID, cf.extTemp, cf.naclConcentration)
-
-def close():
+    db.connect()
+    data_list = Data.select().limit(2)
+    lst = []
+    for col in data_list:     
+        # print(col.id, col.timeStamp, col.tankTemp, col.extTemp, col.tankWeight, col.productWeight, col.phLevel, col.kplusLevel, col.naclConcentration, col.salmonelleLevel, col.ecoliLevel, col.listeriaLevel)
+        lst.append((col.id, col.timeStamp, col.tankTemp, col.extTemp, col.tankWeight, col.productWeight, col.phLevel, col.kplusLevel, col.naclConcentration, col.salmonelleLevel, col.ecoliLevel, col.listeriaLevel))
     db.close()
+    return lst
+    
+
+
 
 
 
