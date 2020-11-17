@@ -13,7 +13,9 @@ for filejson in list_json_files:
 
     # Loading the data into the variable data
     with open('JSON_Files/%s' % filejson) as json_file:
+        print(type(json_file))
         data = json.load(json_file)
+        print(type(json_file))
 
     employee_data = data['emp_details']
 
