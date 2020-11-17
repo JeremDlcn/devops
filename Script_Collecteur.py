@@ -4,9 +4,8 @@ import os
 import shutil
 
 
-
 # Opening JSON files
-list_json_files = os.listdir('C:/Users/Public/DevOps/devops/JSON_Files')
+list_json_files = os.listdir('JSON_Files')
 
 for filejson in list_json_files:
     print(filejson)
@@ -41,5 +40,6 @@ for filejson in list_json_files:
         csv_writer.writerow(emp.values())
 
     data_file.close()
-    
-    shutil.move('C:/Users/Public/DevOps/devops/JSON_Files/%s' % filejson , 'C:/Users/Public/DevOps/devops/Used_JSON/%s' % filejson)
+
+    shutil.move('JSON_Files/%s' %
+                filejson, 'Used_JSON/%s' % filejson)
