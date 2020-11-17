@@ -4,11 +4,13 @@ import time
 from datetime import datetime
 
 # Créez un script qui créer un json et l'envoie au controlleur (envoie de données via les sockets dockers)
+# Create a script that creates a json and sends it to the controller (sends data via docker sockets)
 
 
 def random_json(numero_unite):
     num_machine = 1
     # Génération  de code aléatoire
+    # Random code generation
     for n in range(10):
         dt = int(time.time())
         num_auto = numero_unite
