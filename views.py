@@ -26,7 +26,7 @@ def data():
     docstring
     """
     value = values();
-    print(value)
+    # print(value)
     # data = {
     #     "bar": {
     #         "tempTank": value.tempTank,
@@ -73,4 +73,4 @@ def data():
 
 # running the app
 if __name__ == "__main__":
-    app.run(debug=True)
+    app.run(port=2900, debug=True)
