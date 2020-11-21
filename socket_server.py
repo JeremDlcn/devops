@@ -42,14 +42,14 @@ while serveur_lance:
 
             columns = ', '.join("`" + str(x).replace('/', '_') + "`" for x in mydict.keys())
             values = ', '.join("'" + str(x).replace('/', '_') + "'" for x in mydict.values())            
+            print(columns + values)
             conn = mysql.connector.connect( 
-                host="mysql-leonelal.alwaysdata.net",
-                user="leonelal_devops", 
-                password="devopspassword",
+                host="192.168.1.35",
+                user="root", 
+                password="azerty-85",
                 database="leonelal_devops"
             )
             cursor = conn.cursor()
-
             cursor.execute("""INSERT INTO resultats( %s ) VALUES ( %s );""" % (columns, values))
             conn.commit()
             # Close the connection
