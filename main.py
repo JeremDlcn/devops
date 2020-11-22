@@ -30,8 +30,13 @@ def data():
     # value = initValues()
     # print(value)
 
-    data = {
-        "timestamp": 1605981951,
+    data = [
+    {
+        "info": {
+            "timestamp": 1605981951,
+            "unit":1,
+            "robot":1
+        },
         "bar": {
             "tempTank": 3,
             "tempExt": 10,
@@ -51,7 +56,112 @@ def data():
             "product": 200
         }
 
-    }
+    },
+    {
+        "info": {
+            "timestamp": 1605981951,
+            "unit":2,
+            "robot":1
+        },
+        "bar": {
+            "tempTank": 3,
+            "tempExt": 10,
+            "ph": 7,
+            "k": 40
+        },
+        "lines": {
+            "nacl": [1.5, 1.9, 1.8, 2.0],
+            "bacteria": {
+                "salmonelle": [17.5, 22.5, 22.8, 19.0, 43.0, 22.8, 14.0],
+                "ecoli": [21.2, 30.0, 18.8, 38.8, 23.9, 20.0, 16.0],
+                "listeria": [16.0, 21.0, 19.5, 17.8, 20.2, 44.0, 20.2]
+            }
+        },
+        "weight": {
+            "tank": 2500,
+            "product": 200
+        }
+
+    },
+    {
+        "info": {
+            "timestamp": 1605981951,
+            "unit":3,
+            "robot":1
+        },
+        "bar": {
+            "tempTank": 3,
+            "tempExt": 10,
+            "ph": 7,
+            "k": 40
+        },
+        "lines": {
+            "nacl": [1.5, 1.9, 1.8, 2.0],
+            "bacteria": {
+                "salmonelle": [17.5, 22.5, 22.8, 19.0, 43.0, 22.8, 14.0],
+                "ecoli": [21.2, 30.0, 18.8, 38.8, 23.9, 20.0, 16.0],
+                "listeria": [16.0, 21.0, 19.5, 17.8, 20.2, 44.0, 20.2]
+            }
+        },
+        "weight": {
+            "tank": 2500,
+            "product": 200
+        }
+
+    },
+    {
+        "info": {
+            "timestamp": 1605981951,
+            "unit":4,
+            "robot":1
+        },
+        "bar": {
+            "tempTank": 3,
+            "tempExt": 10,
+            "ph": 7,
+            "k": 40
+        },
+        "lines": {
+            "nacl": [1.5, 1.9, 1.8, 2.0],
+            "bacteria": {
+                "salmonelle": [17.5, 22.5, 22.8, 19.0, 43.0, 22.8, 14.0],
+                "ecoli": [21.2, 30.0, 18.8, 38.8, 23.9, 20.0, 16.0],
+                "listeria": [16.0, 21.0, 19.5, 17.8, 20.2, 44.0, 20.2]
+            }
+        },
+        "weight": {
+            "tank": 2500,
+            "product": 200
+        }
+
+    },
+    {
+        "info": {
+            "timestamp": 1605981951,
+            "unit":5,
+            "robot":1
+        },
+        "bar": {
+            "tempTank": 3,
+            "tempExt": 10,
+            "ph": 7,
+            "k": 40
+        },
+        "lines": {
+            "nacl": [1.5, 1.9, 1.8, 2.0],
+            "bacteria": {
+                "salmonelle": [17.5, 22.5, 22.8, 19.0, 43.0, 22.8, 14.0],
+                "ecoli": [21.2, 30.0, 18.8, 38.8, 23.9, 20.0, 16.0],
+                "listeria": [16.0, 21.0, 19.5, 17.8, 20.2, 44.0, 20.2]
+            }
+        },
+        "weight": {
+            "tank": 2500,
+            "product": 200
+        }
+
+    },
+    ]
     return json.dumps(data)
 
 
