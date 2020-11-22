@@ -35,20 +35,23 @@ class Data(BaseModel):
     docstring
     """
     id = IntegerField(primary_key=True)
-    timeStamp = IntegerField(column_name='horaire')
-    tankTemp = FloatField(column_name='temperature_cuve')
-    extTemp = FloatField(column_name='temperature_exterieure')
-    tankWeight = FloatField(column_name='poids_lait_cuve')
-    productWeight = FloatField(column_name='poids_final')
-    phLevel = FloatField(column_name='mesure_pH')
-    kplusLevel = IntegerField(column_name='mesure_Kplus')
-    naclConcentration = FloatField(column_name='concentration_NaCl')
-    salmonelleLevel = IntegerField(column_name='niveau_bacterie_salmonelle')
-    ecoliLevel = IntegerField(column_name='niveau_bacterie_Ecoli')
-    listeriaLevel = IntegerField(column_name='niveau_bacterie_listeria')
+    unitNumber = IntegerField()
+    robotNumber = IntegerField()
+    robotType = CharField()
+    tankTemp = FloatField()
+    extTemp = FloatField()
+    tankWeight = FloatField()
+    productWeight = FloatField()
+    ph = FloatField()
+    kPlus = IntegerField()
+    nacl = FloatField()
+    salmonellaLevel = IntegerField()
+    ecoliLevel = IntegerField()
+    listeriaLevel = IntegerField()
+    timeStamp = IntegerField()
     
     class Meta:
-        table_name = 'donnees'
+        table_name = 'measures'
 
 
 # def init_db():
@@ -57,15 +60,70 @@ class Data(BaseModel):
 # def close():
 #     db.close()
 
-def values():
+
+def customValues(unit, robot):
     db.connect()
-    data_list = Data.select().limit(2)
-    lst = []
-    for col in data_list:     
-        # print(col.id, col.timeStamp, col.tankTemp, col.extTemp, col.tankWeight, col.productWeight, col.phLevel, col.kplusLevel, col.naclConcentration, col.salmonelleLevel, col.ecoliLevel, col.listeriaLevel)
-        lst.append((col.id, col.timeStamp, col.tankTemp, col.extTemp, col.tankWeight, col.productWeight, col.phLevel, col.kplusLevel, col.naclConcentration, col.salmonelleLevel, col.ecoliLevel, col.listeriaLevel))
+    data_list = Data.select().where((Data.unitNumber == unit) & (Data.robotNumber == robot)).limit(60)
+    res = {
+        "timestamp": 0,
+        "bar": {},
+        "lines": {
+            "nacl": [],
+            "bacteria": {
+                "salmonelle": [],
+                "ecoli": [],
+                "listeria": []
+            }
+        },
+        "weight": {}
+    }
+
+    count = 1
+    len_list = len(data_list)
+    for col in data_list:
+        if count == len_list:
+            res['timestamp'] = col.timeStamp
+            res['bar'] = { "tempTank": col.tankTemp, "tempExt": col.extTemp, "ph": col.ph, "k": col.kPlus }
+            res['weight'] = { "tank": col.tankWeight, "product": col.productWeight }
+        res['lines']['nacl'].append(col.nacl)
+        res['lines']['bacteria']['salmonelle'].append(col.salmonellaLevel)
+        res['lines']['bacteria']['ecoli'].append(col.ecoliLevel)
+        res['lines']['bacteria']['listeria'].append(col.listeriaLevel)
+        count += 1
     db.close()
-    return lst
+    return res
+
+
+# take all values for initialisation
+
+# def initValues():
+#     db.connect()
+
+    # data = {
+    #     "bar": {
+    #         "tempTank": col.tempTank,
+    #         "tempExt": col.tem,
+    #         "ph": 7,
+    #         "k": 40
+    #     },
+    #     "lines": {
+    #         "nacl": [1.5, 1.9, 1.8, 2.0],
+    #         "bacteria": {
+    #             "salmonelle": [17.5, 22.5, 22.8, 19.0, 43.0, 22.8, 14.0],
+    #             "ecoli": [21.2, 30.0, 18.8, 38.8, 23.9, 20.0, 16.0],
+    #             "listeria": [16.0, 21.0, 19.5, 17.8, 20.2, 44.0, 20.2]
+    #         }
+    #     },
+    #     "weight": {
+    #         "tank": 2500,
+    #         "product": 200
+    #     }
+    # }
+    #
+    #
+    # lst.append(data)
+    # db.close()
+    # return lst
     
 
 
