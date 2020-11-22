@@ -62,7 +62,7 @@ def unit():
     robot = request.args.get('robot')
 
     data = customValues(unit, robot)
-    return str(data)
+    return data
 
 
 

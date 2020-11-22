@@ -1,7 +1,19 @@
 <section class="number">
     <div class="number-title">
         <h2>Unité {{ nb }}</h2>
-        <b>20 Novembre - 20:15</b>
+        <b class="datetime">20 Novembre - 20:15</b>
+        <select name="robot-select" class="robot robot-{{ nb }}">
+            <option value="1">Automate 1</option>
+            <option value="2">Automate 2</option>
+            <option value="3">Automate 3</option>
+            <option value="4">Automate 4</option>
+            <option value="5">Automate 5</option>
+            <option value="6">Automate 6</option>
+            <option value="7">Automate 7</option>
+            <option value="8">Automate 8</option>
+            <option value="9">Automate 9</option>
+            <option value="10">Automate 10</option>
+        </select>
     </div>
     <div class="number-value">
         <div class="number-weight">
@@ -17,7 +29,7 @@
         <div class="number-bar">
             <div class="bar-item">
                 <div class="bar-item-container">
-                    <canvas id="bar1"></canvas>
+                    <canvas class="bar1 bar1-unit{{nb}}"></canvas>
                 </div>  
                 <!-- <div class="details-container">
                     <button class="details">Historique <span class="details-arrow">🔻</span></button>
@@ -26,7 +38,7 @@
             </div>
             <div class="bar-item">
                 <div class="bar-item-container">
-                    <canvas id="bar2"></canvas>
+                    <canvas class="bar2 bar2-unit{{nb}}"></canvas>
                 </div>  
                 <!-- <div class="details-container">
                     <button class="details">Historique <span class="details-arrow">🔻</span></button>
@@ -34,7 +46,7 @@
             </div>
             <div class="bar-item">
                 <div class="bar-item-container">
-                    <canvas id="bar3"></canvas>
+                    <canvas class="bar3 bar3-unit{{nb}}"></canvas>
                 </div>  
                 <!-- <div class="details-container">
                     <button class="details">Historique <span class="details-arrow">🔻</span></button>
@@ -42,7 +54,7 @@
             </div>
             <div class="bar-item">
                 <div class="bar-item-container">
-                    <canvas id="bar4"></canvas>
+                    <canvas class="bar4 bar4-unit{{nb}}"></canvas>
                 </div>  
                 <!-- <div class="details-container">
                     <button class="details">Historique <span class="details-arrow">🔻</span></button>

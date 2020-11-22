@@ -239,6 +239,11 @@ main.only {
     font-weight: normal;
 }
 
+#robot {
+    padding: .3rem 0;
+    padding-left: 0.4rem;
+}
+
 
 .weight-container {
     margin-right: 2rem;
@@ -276,10 +281,10 @@ main.only {
     width: min-content;
 }
 
-#bar1,
-#bar2,
-#bar3,
-#bar4 {
+.bar1,
+.bar2,
+.bar3,
+.bar4 {
     width: 60px!important;
     height: 250px!important;
 }

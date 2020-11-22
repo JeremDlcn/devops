@@ -5,18 +5,21 @@ fetch(route, {
 })
 .then(r => r.json())
 .then(data => {
-    console.log(data); //response
+    // console.log(data); //response
    
     
     // update all charts
-    updateChart(data)
+    // updateChart(data)
 });
 
 function updateChart(data) {
 
+    //info value
+    document.querySelector(`.unit[data-unit="${data.info.unit}"] .datetime`).innerText = data.info.timestamp;
+
     //weight values
-    document.querySelector('.weight-tank').innerText = data.weight.tank;
-    document.querySelector('.weight-prod').innerText = data.weight.product;
+    document.querySelector(`.unit[data-unit="${data.info.unit}"] .weight-tank`).innerText = data.weight.tank;
+    document.querySelector(`.unit[data-unit="${data.info.unit}"] .weight-prod`).innerText = data.weight.product;
 
     //bar values
     // Temperature en cuve

@@ -65,7 +65,11 @@ def customValues(unit, robot):
     db.connect()
     data_list = Data.select().where((Data.unitNumber == unit) & (Data.robotNumber == robot)).limit(60)
     res = {
-        "timestamp": 0,
+        "info": {
+            "unit": 0,
+            "robot": 0,
+            "timestamp": 0,
+        },
         "bar": {},
         "lines": {
             "nacl": [],
@@ -82,7 +86,9 @@ def customValues(unit, robot):
     len_list = len(data_list)
     for col in data_list:
         if count == len_list:
-            res['timestamp'] = col.timeStamp
+            res['info']['unit'] = col.unitNumber
+            res['info']['robot'] = col.robotNumber
+            res['info']['timestamp'] = col.timeStamp
             res['bar'] = { "tempTank": col.tankTemp, "tempExt": col.extTemp, "ph": col.ph, "k": col.kPlus }
             res['weight'] = { "tank": col.tankWeight, "product": col.productWeight }
         res['lines']['nacl'].append(col.nacl)
