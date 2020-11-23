@@ -9,7 +9,7 @@ pipeline {
 
     stage('Delivery') {
       steps {
-        sh '/home/admin-local/delivery.sh'
+        sh 'sudo /home/admin-local/delivery.sh'
       }
     }
 
