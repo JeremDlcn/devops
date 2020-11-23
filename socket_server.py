@@ -41,16 +41,17 @@ while serveur_lance:
             mydict = json.loads(json.dumps(eval(msg_recu)))
 
             columns = ', '.join("`" + str(x).replace('/', '_') + "`" for x in mydict.keys())
-            values = ', '.join("'" + str(x).replace('/', '_') + "'" for x in mydict.values())            
-            print(columns + values)
-            conn = mysql.connector.connect( 
-                host="192.168.1.35",
-                user="root", 
-                password="azerty-85",
-                database="leonelal_devops"
+            values = ', '.join("'" + str(x).replace('/', '_') + "'" for x in mydict.values())
+            conn = mysql.connector.connect(
+                host="10.44.250.24",
+                user="root",
+                password="root",
+                database="devops_leonelaboss"
             )
             cursor = conn.cursor()
-            cursor.execute("""INSERT INTO resultats( %s ) VALUES ( %s );""" % (columns, values))
+
+            #cursor.execute("""INSERT INTO resultats( %s ) VALUES ( %s );""" % (columns, values))
+            cursor.execute("""INSERT INTO `measures` (id, %s ) VALUES ( id,  %s );""" % (columns, values))
             conn.commit()
             # Close the connection
             conn.close()
@@ -62,3 +63,5 @@ for client in clients_connectes:
     client.close()
 
 connexion_principale.close()
+
+
