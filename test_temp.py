@@ -1,20 +1,18 @@
 import unittest
-from models import Data
+import os.path
+
 
 class TempTest(unittest.TestCase):
 
-    def test_temp(self):
-        # f = Data.select()
-        # for cf in f:     
-        #     print(cf.numero_unite, cf.nom_unite)
-        # self.assertTrue(tempTest(cf.tankTemp))
-        self.assertTrue(tempTest(3))
+    def test_main_file(self):
+        self.assertTrue(os.path.isfile('./main.py'))
 
-def tempTest(temp):
-    if temp >= 2.5 and temp <= 4:
-        return True
-    else:
-        return False
+    def test_models_file(self):
+        self.assertTrue(os.path.isfile('./main.py'))
+
+    def test_template(self):
+        self.assertTrue(os.path.isfile('./templates/index.html'))
+
 
 
 if __name__ == "__main__":
