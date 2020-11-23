@@ -1,10 +1,12 @@
+# --coding:Latin-1 -
+
 import random
 import unittest
 
 
 class RandomTest(unittest.TestCase):
 
-    """Test case utilisé pour tester les fonctions du module 'random'."""
+    """Test case utilise pour tester les fonctions du module 'random'."""
 
     def test_choice(self):
         """Test le fonctionnement de la fonction 'random.choice'."""
