@@ -1,20 +1,16 @@
 import unittest
-from models import Data
+from main import data
+import json
+data = json.loads(data())
+
 
 class TempTest(unittest.TestCase):
 
     def test_temp(self):
-        # f = Data.select()
-        # for cf in f:     
-        #     print(cf.numero_unite, cf.nom_unite)
-        # self.assertTrue(tempTest(cf.tankTemp))
-        self.assertTrue(tempTest(3))
 
-def tempTest(temp):
-    if temp >= 2.5 and temp <= 4:
-        return True
-    else:
-        return False
+        res = data[0]['info']['unit']
+        self.assertTrue(res, 1)
+
 
 
 if __name__ == "__main__":
