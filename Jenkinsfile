@@ -3,7 +3,7 @@ pipeline {
   stages {
     stage('Web test') {
       steps {
-        sh 'virtual venv'
+        sh 'virtualenv venv'
         sh '. venv/bin/activate'
         sh 'pip install -r requirements.txt '
         sh '''
