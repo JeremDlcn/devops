@@ -3,9 +3,11 @@ pipeline {
   stages {
     stage('Web test') {
       steps {
-        sh 'pip install -r /var/lib/jenkins/workspace/devops-web_web/requirements.txt'
+        sh 'virtual venv'
+        sh '. venv/bin/activate'
+        sh 'pip install -r requirements.txt '
         sh '''
-python test_temp.py'''
+python test_temp.py -v'''
       }
     }
 
