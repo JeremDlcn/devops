@@ -7,5 +7,11 @@ pipeline {
       }
     }
 
+    stage('Delivery') {
+      steps {
+        sh 'echo \'Testing delivery\''
+      }
+    }
+
   }
 }
