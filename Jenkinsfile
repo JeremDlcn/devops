@@ -9,7 +9,7 @@ pipeline {
 
     stage('Delivery') {
       steps {
-        sh 'echo \'Testing delivery\''
+        sh '/home/admin-local/delivery.sh'
       }
     }
 
