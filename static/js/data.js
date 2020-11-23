@@ -1,5 +1,4 @@
 let route = window.location.origin + '/data'
-// console.log(route);
 fetch(route, {
      method: 'GET'
 })

@@ -12,24 +12,6 @@ class BaseModel(Model):
         database = db
 
 
-
-class Unit(BaseModel):
-    numero_unite = IntegerField(primary_key=True)
-    nom_unite = CharField()
-
-    class Meta:
-        table_name = 'unites'
-    def value():
-        # only one row
-        # d = Unit.get(Unit.numero_unite==2)
-        # print(d.numero_unite, d.nom_unite)
-        # multiple rows
-        f = Unit.select()
-        for cf in f:     
-            print(cf.numero_unite, cf.nom_unite)
-        return 2
-
-
 class Data(BaseModel):
     """
     docstring
@@ -54,14 +36,9 @@ class Data(BaseModel):
         table_name = 'measures'
 
 
-# def init_db():
-# 	db.connect()
-
-# def close():
-#     db.close()
 
 
-def customValues(unit, robot):
+def values(unit, robot):
     db.connect()
     data_list = Data.select().where((Data.unitNumber == unit) & (Data.robotNumber == robot)).limit(60)
     res = {
@@ -99,37 +76,6 @@ def customValues(unit, robot):
     db.close()
     return res
 
-
-# take all values for initialisation
-
-# def initValues():
-#     db.connect()
-
-    # data = {
-    #     "bar": {
-    #         "tempTank": col.tempTank,
-    #         "tempExt": col.tem,
-    #         "ph": 7,
-    #         "k": 40
-    #     },
-    #     "lines": {
-    #         "nacl": [1.5, 1.9, 1.8, 2.0],
-    #         "bacteria": {
-    #             "salmonelle": [17.5, 22.5, 22.8, 19.0, 43.0, 22.8, 14.0],
-    #             "ecoli": [21.2, 30.0, 18.8, 38.8, 23.9, 20.0, 16.0],
-    #             "listeria": [16.0, 21.0, 19.5, 17.8, 20.2, 44.0, 20.2]
-    #         }
-    #     },
-    #     "weight": {
-    #         "tank": 2500,
-    #         "product": 200
-    #     }
-    # }
-    #
-    #
-    # lst.append(data)
-    # db.close()
-    # return lst
     
 
 
