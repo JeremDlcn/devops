@@ -6,7 +6,7 @@ import unittest
 
 class RandomTest(unittest.TestCase):
 
-    """Test case utilise pour tester les fonctions du module 'random'."""
+    """Test case utilise pour tester les fonctions du module 'random' et Jenkins."""
 
     def test_choice(self):
         """Test le fonctionnement"""
