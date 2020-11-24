@@ -11,6 +11,7 @@ pipeline {
       steps {
         sh 'docker-compose -f /home/admin-local/devops/docker-compose.yml stop'
         sh '/home/admin-local/delivery.sh'
+        sh 'docker-compose -f /home/admin-local/devops/docker-compose.yml build'
         sh 'docker-compose -f /home/admin-local/devops/docker-compose.yml start'
       }
     }
