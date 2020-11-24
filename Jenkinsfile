@@ -9,9 +9,9 @@ pipeline {
 
     stage('Delivery') {
       steps {
-        sh 'docker-compose -f /home/admin-local/devops/ stop'
+        sh 'docker-compose -f /home/admin-local/devops/docker-compose.yml stop'
         sh '/home/admin-local/delivery.sh'
-        sh 'docker-compose -f /home/admin-local/devops/ start'
+        sh 'docker-compose -f /home/admin-local/devops/docker-compose.yml start'
       }
     }
 
