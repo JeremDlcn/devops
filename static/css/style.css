@@ -200,7 +200,9 @@ main.only {
     justify-content: flex-start;
 }
 
-
+.datetime {
+    display: block;
+}
 
 .lines{
     width: 65%;

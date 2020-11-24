@@ -11,9 +11,9 @@ fetch(route, {
 });
 
 function updateChart(data) {
-
+    let datt = new Date(data.info.timestamp * 1000).toLocaleString('fr-FR');
     //info value
-    document.querySelector(`.unit[data-unit="${data.info.unit}"] .datetime`).innerText = data.info.timestamp;
+    document.querySelector(`.unit[data-unit="${data.info.unit}"] .datetime`).innerText = datt;
 
     //weight values
     document.querySelector(`.unit[data-unit="${data.info.unit}"] .weight-tank`).innerText = data.weight.tank;
