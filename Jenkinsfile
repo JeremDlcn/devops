@@ -9,7 +9,7 @@ pipeline {
           }
         }
 
-        stage('') {
+        stage('error') {
           steps {
             sh 'python test_unitaire_collecteur.py -v'
           }
@@ -20,7 +20,9 @@ pipeline {
 
     stage('Delivery') {
       steps {
+        sh 'docker-compose -f /home/admin-local/devops/ stop'
         sh '/home/admin-local/delivery.sh'
+        sh 'docker-compose -f /home/admin-local/devops/ start'
       }
     }
 
