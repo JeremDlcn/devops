@@ -4,8 +4,6 @@ fetch(route, {
 })
 .then(r => r.json())
 .then(data => {
-    console.log(data); //response
-        
     // update all charts
     for (let i = 0; i < data.length; i++){
         updateChart(data[i])
@@ -22,9 +20,17 @@ function updateChart(data) {
     document.querySelector(`.unit[data-unit="${data.info.unit}"] .weight-prod`).innerText = data.weight.product;
 
     //Bar values
-    //Température de la cuve
     let bars1Unit = bars1[data.info.unit - 1];
+    let bars2Unit = bars2[data.info.unit - 1];
+    let bars3Unit = bars3[data.info.unit - 1];
+    let bars4Unit = bars4[data.info.unit - 1];
 
+    bars1Unit.data.datasets[0].data = [];
+    bars2Unit.data.datasets[0].data = [];
+    bars3Unit.data.datasets[0].data = [];
+    bars4Unit.data.datasets[0].data = [];
+
+    //Température de la cuve
     bars1Unit.data.datasets.forEach((dataset) => {
         dataset.data.push(data.bar.tempTank);
     })
@@ -32,8 +38,6 @@ function updateChart(data) {
 
 
     // Température extérieur
-    let bars2Unit = bars2[data.info.unit - 1];
-
     bars2Unit.data.datasets.forEach((dataset) => {
         dataset.data.push(data.bar.tempExt);
     })
@@ -41,7 +45,6 @@ function updateChart(data) {
 
 
     // pH de la cuve
-    let bars3Unit = bars3[data.info.unit - 1];
     bars3Unit.data.datasets.forEach((dataset) => {
         dataset.data.push(data.bar.ph);
     })
@@ -49,7 +52,6 @@ function updateChart(data) {
 
 
     // K+ de la cuve
-    let bars4Unit = bars4[data.info.unit - 1];
     bars4Unit.data.datasets.forEach((dataset) => {
         dataset.data.push(data.bar.k);
     })
