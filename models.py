@@ -1,21 +1,23 @@
-from peewee import *
+from peewee import *  #importation de l'ORM
 
 
-# instance de bdd
-db = MySQLDatabase('leonelal_devops', user='leonelal_devops', password='devopspassword', host='mysql-leonelal.alwaysdata.net', port=3306)
-# db = MySQLDatabase('devops_leonelaboss', user='root', password='root', host='10.44.250.24', port=3306)
+# Connexion à la base de données
+# et déclaration de l'instance nommée "db"
+db = MySQLDatabase('devops_leonelaboss', user='root', password='root', host='10.44.250.24', port=3306)
 
 class BaseModel(Model):
-    """
-    docstring
+    """Class permettant de lié l'ORM à l'instance de la base de données
+
     """
     class Meta:
         database = db
 
 
 class Data(BaseModel):
-    """
-    docstring
+    """Class contenant le modèle de la table "measures"
+    
+    Parameters:
+        Basemodel: prendre en compte la connexion avec la base de données
     """
     id = IntegerField(primary_key=True)
     unitNumber = IntegerField()
@@ -34,14 +36,29 @@ class Data(BaseModel):
     timeStamp = IntegerField()
     
     class Meta:
+        """Class de liaison entre la table et le modèle
+        """
         table_name = 'measures'
 
 
 
 
 def values(unit, robot):
-    db.connect()
+    """Fonction renvoyant les données de la table measures selon l'unité et l'automate
+
+    Parameters:
+        unit (int): numéro de l'unite
+        robot (int): numéro de l'automate
+
+    Returns:
+        res (dictionnary): renvoi un dictionnaire avec les données pour être piloter facilement par le Javascript
+    """
+
+    db.connect() #ouvrir la connexion avec la base de données
+    
+    #Faire la requête pour récupérer les 60 dernière lignes contenant le bon numéro d'unité et d'automate
     data_list = Data.select().where((Data.unitNumber == unit) & (Data.robotNumber == robot)).limit(60)
+    #initialisation du dictionnaire accueillant les données
     res = {
         "info": {
             "unit": 0,
@@ -60,10 +77,10 @@ def values(unit, robot):
         "weight": {}
     }
 
-    count = 1
-    len_list = len(data_list)
+    count = 1 #débuter le compteur à 1
+    len_list = len(data_list) #récupérer la longeur de la liste
     for col in data_list:
-        if count == len_list:
+        if count == len_list: #si on arrive à la dernière ligne on insère les données les plus récentes
             res['info']['unit'] = col.unitNumber
             res['info']['robot'] = col.robotNumber
             res['info']['timestamp'] = col.timeStamp
@@ -74,8 +91,8 @@ def values(unit, robot):
         res['lines']['bacteria']['ecoli'].append(col.ecoliLevel)
         res['lines']['bacteria']['listeria'].append(col.listeriaLevel)
         count += 1
-    db.close()
-    return res
+    db.close() #fermer la connexion à la base de données
+    return res #retourner le dictionnaire
 
     
 

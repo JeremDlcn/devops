@@ -1,3 +1,8 @@
+// Fichier permettant l'initialisation des graphiques
+
+
+
+// tableau contenant tout les options des graphiques qui permet de les réutiliser entre les unités
 const optionsBarCharts = [
     {
         type: 'bar',
@@ -41,6 +46,7 @@ const optionsBarCharts = [
     }
 ];
 
+// Initialistion des graphiques en bar
 let bar1Charts = document.querySelectorAll(`.bar1`);
 let bar2Charts = document.querySelectorAll(`.bar2`);
 let bar3Charts = document.querySelectorAll(`.bar3`);
@@ -73,8 +79,10 @@ for (let i = 0; i < 5; i++){
 
 
 
-// Lines charts
-// ////////////
+// Graphiques avec lignes
+
+
+// options pour les graphiques en lignes
 const optionsLinesCharts = [
     {
         type: 'line',
@@ -99,6 +107,7 @@ const optionsLinesCharts = [
 ];
 
 
+//initialisation des graphiques
 let line1Charts = document.querySelectorAll(`.line1`);
 let line2Charts = document.querySelectorAll(`.line2`);
 

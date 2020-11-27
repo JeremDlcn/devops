@@ -1,7 +1,11 @@
+// Fichier de gestion des commandes
+//  Changement de vue et pagination
+// 
 const viewGlobal = document.querySelector('.view-global');
 const viewUnit = document.querySelector('.view-unit');
 const pagination = document.querySelector('.pagination');
 
+// Changement de vue
 viewGlobal.addEventListener('click', ()=>{
     viewGlobal.parentElement.classList.remove('active')
     pagination.classList.remove('exist');
@@ -15,6 +19,8 @@ viewUnit.addEventListener('click', ()=>{
     hideUnit(1);
 });
 
+
+// Mise en place de la pagination
 const units = document.querySelectorAll('.unit');
 
 function sortUnit() {
