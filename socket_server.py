@@ -43,7 +43,7 @@ while serveur_lance:
             columns = ', '.join("`" + str(x).replace('/', '_') + "`" for x in mydict.keys())
             values = ', '.join("'" + str(x).replace('/', '_') + "'" for x in mydict.values())
             conn = mysql.connector.connect(
-                host="10.44.250.24",
+                host="10.44.250.26",
                 user="root",
                 password="root",
                 database="devops_leonelaboss"
