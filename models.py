@@ -3,6 +3,7 @@ from peewee import *  #importation de l'ORM
 
 # Connexion à la base de données
 # et déclaration de l'instance nommée "db"
+# db = MySQLDatabase('leonelal_devops', user='leonelal_devops', password='devopspassword', host='mysql-leonelal.alwaysdata.net', port=3306)
 db = MySQLDatabase('devops_leonelaboss', user='root', password='root', host='10.44.250.24', port=3306)
 
 class BaseModel(Model):
