@@ -58,8 +58,10 @@ def values(unit, robot):
     db.connect() #ouvrir la connexion avec la base de données
     
     #Faire la requête pour récupérer les 60 dernière lignes contenant le bon numéro d'unité et d'automate
-    data_list = Data.select().where((Data.unitNumber == unit) & (Data.robotNumber == robot)).limit(60)
+    data_list = Data.select().where((Data.unitNumber == unit) & (Data.robotNumber == robot)).order_by(Data.id.desc()).limit(60)
     #initialisation du dictionnaire accueillant les données
+    for elt in data_list:
+        print(elt.id)
     res = {
         "info": {
             "unit": 0,

@@ -4,8 +4,9 @@
 //Mise à jour toutes les minutes
 (init())
 setInterval(() => {
-    init()
-}, 60000);
+    init();
+    console.log('test');
+}, 15000);
 
 
 //récupération des dernières données de la base
