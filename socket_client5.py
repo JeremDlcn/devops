@@ -17,7 +17,7 @@ while msg_a_envoyer != b"fin":
 
     # Random code generation
     for n in range(10):
-        num_auto = 1 #Numéro unite
+        num_auto = 5 #Numéro unite
         num_machine = num_machine
         type_machine = "0X0000BA20"
         temp_cuv = random.uniform(2.5, 4)
