@@ -46,7 +46,7 @@ while msg_a_envoyer != b"fin":
                     "ecoliLevel": ecoli,
                     "listeriaLevel": listeria,
                     "timeStamp": dt}
-        print(personneDict)
+        #print(personneDict)
         with open("JSON_Files/paramunite_%d_%d_%d.json" % (num_auto, num_machine, dt), "w") as jsonFile:
             json.dump(personneDict, jsonFile)
         num_machine += 1
