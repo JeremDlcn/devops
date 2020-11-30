@@ -7,10 +7,10 @@ import shutil
 import time
 import mysql.connector
 
-
 hote = ''
 port = 2222
 
+#Lancement de la connexion socket
 connexion_principale = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 connexion_principale.bind((hote, port))
 connexion_principale.listen(5)
@@ -39,9 +39,11 @@ while serveur_lance:
             msg_recu = msg_recu.decode()
             print(msg_recu)
             mydict = json.loads(json.dumps(eval(msg_recu)))
-
+            
+            #Séparation des noms de colonnes et des données 
             columns = ', '.join("`" + str(x).replace('/', '_') + "`" for x in mydict.keys())
             values = ', '.join("'" + str(x).replace('/', '_') + "'" for x in mydict.values())
+            #Connexion à la base de données
             conn = mysql.connector.connect(
                 host="10.44.250.26",
                 user="root",
@@ -49,8 +51,7 @@ while serveur_lance:
                 database="devops_leonelaboss"
             )
             cursor = conn.cursor()
-
-            #cursor.execute("""INSERT INTO resultats( %s ) VALUES ( %s );""" % (columns, values))
+            #Insertion des données en base
             cursor.execute("""INSERT INTO `measures` (id, %s ) VALUES ( id,  %s );""" % (columns, values))
             conn.commit()
             # Close the connection
