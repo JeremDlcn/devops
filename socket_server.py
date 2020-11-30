@@ -10,7 +10,7 @@ import mysql.connector
 hote = ''
 port = 2222
 
-#Lancement de la connexion socket
+#Launch connexion with socket
 connexion_principale = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 connexion_principale.bind((hote, port))
 connexion_principale.listen(5)
@@ -40,10 +40,10 @@ while serveur_lance:
             print(msg_recu)
             mydict = json.loads(json.dumps(eval(msg_recu)))
             
-            #Séparation des noms de colonnes et des données 
+            #Separation between columns names and data 
             columns = ', '.join("`" + str(x).replace('/', '_') + "`" for x in mydict.keys())
             values = ', '.join("'" + str(x).replace('/', '_') + "'" for x in mydict.values())
-            #Connexion à la base de données
+            #Database connexion
             conn = mysql.connector.connect(
                 host="10.44.250.26",
                 user="root",
@@ -51,7 +51,7 @@ while serveur_lance:
                 database="devops_leonelaboss"
             )
             cursor = conn.cursor()
-            #Insertion des données en base
+            #Insert data in database
             cursor.execute("""INSERT INTO `measures` (id, %s ) VALUES ( id,  %s );""" % (columns, values))
             conn.commit()
             # Close the connection

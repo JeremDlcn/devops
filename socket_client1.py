@@ -4,9 +4,9 @@ import json
 import time
 from datetime import datetime
 
-hote = "10.44.250.24"
+hote = "10.44.250.26"
 port = 2222
-#Lancement du socket
+#Socket launch
 connexion_avec_serveur = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 connexion_avec_serveur.connect((hote, port))
 print("Connexion établie avec le serveur sur le port {}".format(port))
@@ -15,9 +15,9 @@ while msg_a_envoyer != b"fin":
 
     num_machine = 1
 
-    # Génération données aléatoires
+    # Random data generation
     for n in range(10):
-        num_auto = 1 #Numéro unite
+        num_auto = 1 #Unit number
         num_machine = num_machine
         type_machine = "0X0000BA20"
         temp_cuv = random.uniform(2.5, 4)
@@ -32,7 +32,7 @@ while msg_a_envoyer != b"fin":
         ecoli = random.randint(35, 49)
         listeria = random.randint(28, 54)
         dt = int(time.time())
-        #Création dictionaire de données
+        #Data dictionnary creation
         personneDict ={ "unitNumber": num_auto,
                     "robotNumber": num_machine,
                     "robotType": type_machine,
@@ -48,16 +48,16 @@ while msg_a_envoyer != b"fin":
                     "listeriaLevel": listeria,
                     "timeStamp": dt}
         print(personneDict)
-        #Création fichier JSON
+        #JSON file creation
         with open("JSON_Files/paramunite_%d_%d_%d.json" % (num_auto, num_machine, dt), "w") as jsonFile:
             json.dump(personneDict, jsonFile)
         num_machine += 1
-        #Modification et envoie des données via le socket
+        #Modify and send data via socket
         msg_a_envoyer = str(personneDict)
         msg_a_envoyer = msg_a_envoyer.encode()
         connexion_avec_serveur.send(msg_a_envoyer)
         time.sleep(0.5)
-    #Boucle envoie de données    
+    #Loop send data   
     time.sleep(60)
 print("Fermeture de la connexion")
 connexion_avec_serveur.close()
