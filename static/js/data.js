@@ -6,7 +6,7 @@
 setInterval(() => {
     init();
     console.log('test');
-}, 15000);
+}, 60000);
 
 
 //récupération des dernières données de la base
